@@ -224,6 +224,26 @@ if (USE_QT5)
         endif()
         add_feature_info("WITH_WEBKIT, QtWebKit and QtWebKitWidgets modules" Qt5WebKitWidgets_FOUND "Support showing previews for URLs in chat")
 
+        # extra-cmake-modules
+        find_package(ECM NO_MODULE QUIET)
+        set_package_properties(ECM PROPERTIES TYPE RECOMMENDED
+            URL "https://projects.kde.org/projects/kdesupport/extra-cmake-modules"
+            DESCRIPTION "required for finding KDE Frameworks"
+            PURPOSE     "Needed to find dependencies required for some optional functionality, like spell-checking"
+        )
+
+        if (ECM_FOUND)
+            list(APPEND CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
+
+            find_package(KF5Sonnet QUIET)
+            set_package_properties(KF5Sonnet PROPERTIES TYPE RECOMMENDED
+                URL "http://api.kde.org/frameworks-api/frameworks5-apidocs/sonnet/html"
+                DESCRIPTION "framework for providing spell-checking capabilities"
+                PURPOSE "Enables spell-checking support in input widgets"
+            )
+
+        endif()
+
     endif(BUILD_GUI)
     if (BUILD_CORE)
         find_package(Qt5Script QUIET)

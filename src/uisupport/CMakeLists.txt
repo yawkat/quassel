@@ -55,4 +55,9 @@ if (KDE4_FOUND)
     target_link_libraries(mod_uisupport ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBRARY})
 endif()
 
+if (KF5Sonnet_FOUND)
+    add_definitions(-DHAVE_SONNET)
+    target_link_libraries(mod_uisupport KF5::SonnetUi)
+endif()
+
 add_dependencies(mod_uisupport mod_common mod_client)

@@ -144,6 +144,11 @@
 #  include "settingspages/shortcutssettingspage.h"
 #endif
 
+#ifdef HAVE_SONNET
+#  include "settingspages/sonnetsettingspage.h"
+#endif
+
+
 MainWin::MainWin(QWidget *parent)
 #ifdef HAVE_KDE
     : KMainWindow(parent),
@@ -1334,6 +1339,9 @@ void MainWin::showSettingsDlg()
     dlg->registerSettingsPage(new BufferViewSettingsPage(dlg));
     dlg->registerSettingsPage(new InputWidgetSettingsPage(dlg));
     dlg->registerSettingsPage(new TopicWidgetSettingsPage(dlg));
+#ifdef HAVE_SONNET
+    dlg->registerSettingsPage(new SonnetSettingsPage(dlg));
+#endif
     dlg->registerSettingsPage(new HighlightSettingsPage(dlg));
     dlg->registerSettingsPage(new NotificationsSettingsPage(dlg));
     dlg->registerSettingsPage(new BacklogSettingsPage(dlg));

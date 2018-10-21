@@ -98,6 +98,10 @@ void FixedBacklogRequester::requestBacklog(const BufferIdList &bufferIds)
     }
 }
 
+void FixedBacklogRequester::requestInitialBacklog() {
+    // do nothing
+}
+
 
 // ========================================
 //  GLOBAL UNREAD BACKLOG REQUESTER

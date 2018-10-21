@@ -81,6 +81,7 @@ class FixedBacklogRequester : public BacklogRequester
 {
 public:
     FixedBacklogRequester(ClientBacklogManager *backlogManager);
+    virtual void requestInitialBacklog();
     virtual void requestBacklog(const BufferIdList &bufferIds);
 
 private:
